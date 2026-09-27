@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atharva Pandey | Level 1 Developer Portfolio</title>
+    
+    <!-- Google Fonts for Game Pixel Aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN (Included ~10% utility classes for bonus marks) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgDark: '#090a10',
+                        bgCard: '#121524',
+                        accentCyan: '#00f0ff',
+                        accentPurple: '#9d4edd',
+                        accentGold: '#ffbe0b',
+                        accentGreen: '#00f5d4'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Stylesheet (Overrides & Maintains 90% Retro UI & Star Rating Logic) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#090a10] text-gray-100 min-h-screen relative overflow-x-hidden">
+
+    <!-- CSS-only Replay & Skip Cutscene Toggle -->
+    <input type="checkbox" id="skip-cutscene" class="cutscene-toggle">
+
+    <!-- ========================================== -->
+    <!-- 🎬 CUTSCENE INTRO ANIMATION (CONNOR)       -->
+    <!-- ========================================== -->
+    <label for="skip-cutscene" class="intro-screen select-none cursor-pointer">
+        <span class="skip-btn tracking-wider hover:scale-105 transition-transform">PRESS [ESC] OR CLICK ANYWHERE TO SKIP ⏩</span>
+        
+        <!-- Camera Flash Overlay -->
+        <div class="camera-flash"></div>
+
+        <!-- Cutscene Stage -->
+        <div class="cutscene-stage">
+            <!-- Connor Character Sprite Container -->
+            <div class="connor-character">
+                <img src="connor.png" alt="Connor with Camera" class="connor-img drop-shadow-lg">
+                
+                <!-- Camera Shutter Effect Visual -->
+                <div class="camera-shutter font-bold tracking-tight">
+                    <span class="flash-icon">📸</span>
+                    <span class="click-text">*CLICK!*</span>
+                </div>
+            </div>
+
+            <!-- Pixel Dialogue Box -->
+            <div class="dialogue-box">
+                <div class="speaker-name tracking-wide font-bold uppercase">Connor</div>
+                <div class="dialogue-text dialogue-1 font-semibold">
+                    "Ohh! You look so Beautiful! 📸✨"
+                </div>
+                <div class="dialogue-text dialogue-2 font-semibold">
+                    "Welcome! Here I present my owner's portfolio! Come, let me guide you! 🎮🚀"
+                </div>
+                <div class="dialogue-prompt tracking-wider uppercase">► Click anywhere to proceed...</div>
+            </div>
+        </div>
+    </label>
+
+    <!-- ========================================== -->
+    <!-- 🕹️ GAME MAIN NAVBAR & HUD                   -->
+    <!-- ========================================== -->
+    <header class="game-header sticky top-0 z-50">
+        <div class="hud-container">
+            <!-- Player Status Badge -->
+            <div class="player-hud">
+                <div class="player-avatar-mini">
+                    <div class="pixel-avatar-icon">👨‍💻</div>
+                </div>
+                <div class="player-info">
+                    <div class="player-name font-bold tracking-wide">ATHARVA PANDEY <span class="badge-lvl font-bold tracking-tight">LVL 1</span></div>
+                    <!-- HP / Passion Bar -->
+                    <div class="status-bar-group">
+                        <span class="bar-label uppercase font-semibold">HP (PASSION)</span>
+                        <div class="bar-track hp-track">
+                            <div class="bar-fill hp-fill"></div>
+                        </div>
+                        <span class="bar-value">100/100</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="game-nav">
+                <a href="#hero" class="nav-item active hover:text-accentGold transition-colors"><span>👤</span> HERO</a>
+                <a href="#about" class="nav-item hover:text-accentGold transition-colors"><span>📜</span> ABOUT</a>
+                <a href="#skills" class="nav-item hover:text-accentGold transition-colors"><span>⚡</span> SKILLS</a>
+                <a href="#projects" class="nav-item hover:text-accentGold transition-colors"><span>🔒</span> QUESTS</a>
+                <a href="#education" class="nav-item hover:text-accentGold transition-colors"><span>🎓</span> GUILD</a>
+                <a href="#contact" class="nav-item hover:text-accentGold transition-colors"><span>💬</span> CONTACT</a>
+                <a href="#feedback" class="nav-item hover:text-accentGold transition-colors"><span>⭐</span> FEEDBACK</a>
+            </nav>
+
+            <!-- Cutscene Replay Label -->
+            <label for="skip-cutscene" class="replay-cutscene-btn tracking-wider hover:scale-105 transition-transform" title="Replay Connor Intro Cutscene">
+                🎬 REPLAY INTRO
+            </label>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-wrapper">
+
+        <!-- ========================================== -->
+        <!-- 👤 HERO SECTION                            -->
+        <!-- ========================================== -->
+        <section id="hero" class="hero-section">
+            <div class="game-card hero-card shadow-2xl">
+                <div class="hero-grid">
+                    <!-- Left: Player Profile Details -->
+                    <div class="hero-content">
+                        <div class="online-tag font-bold tracking-widest">● PLAYER 1 CONNECTED</div>
+                        <h1 class="hero-title tracking-tight font-extrabold">HELL0, I'M <span class="highlight-text">ATHARVA PANDEY</span></h1>
+                        <p class="hero-subtitle tracking-wide font-medium">👾 COMPUTER SCIENCE STUDENT </p>
+                        
+                        <div class="hero-quote-box">
+                            <p class="hero-quote italic">
+                                "I am very much interested in tech, building digital experiences, and mastering the craft of programming one line of code at a time!"
+                            </p>
+                        </div>
+
+                        <!-- Player Stats / XP Bars -->
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-name font-semibold uppercase tracking-wider">HTML & CSS MASTERY</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill css-fill" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name font-semibold uppercase tracking-wider">JAVA LEARNING XP</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill java-fill" style="width: 55%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="hero-actions">
+                            <a href="#skills" class="btn btn-primary font-bold uppercase tracking-wider hover:scale-105 transition-transform">⚡ VIEW SKILL TREE</a>
+                            <a href="https://github.com/AtharvaP0507" target="_blank" class="btn btn-secondary font-bold uppercase tracking-wider hover:scale-105 transition-transform">
+                                🐙 GITHUB PROFILE
+                            </a>
+                            <a href="https://www.linkedin.com/in/atharva-pandey-a6032043a/" target="_blank" class="btn btn-linkedin font-bold uppercase tracking-wider hover:scale-105 transition-transform">
+                                💼 LINKEDIN
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Character Frame -->
+                    <div class="hero-character-frame">
+                        <div class="pixel-border-box">
+                            <div class="character-preview">
+                                <img src="connor.png" alt="Connor Companion" class="hero-connor-img">
+                                <div class="character-caption uppercase font-bold tracking-wider">COMPANION: CONNOR 📸</div>
+                            </div>
+                            <div class="inventory-quick-view">
+                                <div class="inventory-slot active-slot font-bold" title="HTML Skill">🌐 HTML</div>
+                                <div class="inventory-slot active-slot font-bold" title="CSS Skill">🎨 CSS</div>
+                                <div class="inventory-slot pending-slot font-bold" title="Java Skill">☕ JAVA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 📜 ABOUT SECTION                           -->
+        <!-- ========================================== -->
+        <section id="about" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title tracking-tight"><span>📜</span> QUEST LOG: PLAYER BIO</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="about-grid">
+                <!-- Card 1: Who Am I -->
+                <div class="game-card about-card hover:border-accentCyan transition-colors">
+                    <div class="card-badge uppercase tracking-wider font-bold">IDENTITY</div>
+                    <h3 class="font-bold">Who Am I?</h3>
+                    <p>
+                        My name is <strong>Atharva Pandey</strong>. I am currently pursuing my degree in 
+                        <strong>Computer Science</strong> at <strong>Scaler School of Technology</strong>.
+                    </p>
+                    <p>
+                        Ever since I wrote my first lines of code, I became deeply interested in tech and creating things from scratch!
+                    </p>
+                </div>
+
+                <!-- Card 2: Tech Interest -->
+                <div class="game-card about-card hover:border-accentCyan transition-colors">
+                    <div class="card-badge uppercase tracking-wider font-bold">PASSION</div>
+                    <h3 class="font-bold">Tech Enthusiasm</h3>
+                    <p>
+                        I love exploring how computer software works under the hood. From crafting clean layouts with HTML and CSS 
+                        to learning core programming concepts in Java, I get excited about solving problems and building neat interfaces.
+                    </p>
+                </div>
+
+                <!-- Card 3: Current Objective -->
+                <div class="game-card about-card hover:border-accentCyan transition-colors">
+                    <div class="card-badge uppercase tracking-wider font-bold">CURRENT MISSION</div>
+                    <h3 class="font-bold">Learning Roadmap</h3>
+                    <p>
+                        Right now, I am focusing heavily on mastering web fundamentals (HTML/CSS) and building strong algorithmic logic with Java.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- ⚡ SKILLS SECTION                          -->
+        <!-- ========================================== -->
+        <section id="skills" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title tracking-tight"><span>⚡</span> SKILL INVENTORY</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Skill 1: HTML -->
+                <div class="game-card skill-card learned hover:border-accentCyan transition-colors">
+                    <div class="skill-status-tag status-learned font-bold tracking-wider">UNLOCKED ✓</div>
+                    <div class="skill-icon">🌐</div>
+                    <h3 class="skill-name font-bold uppercase tracking-wide">HTML</h3>
+                    <p class="skill-desc">Learned structure, semantic tags, forms, media, and web document layout.</p>
+                    <div class="skill-level font-bold">MASTERY: LEVEL 10</div>
+                </div>
+
+                <!-- Skill 2: CSS -->
+                <div class="game-card skill-card learned hover:border-accentCyan transition-colors">
+                    <div class="skill-status-tag status-learned font-bold tracking-wider">UNLOCKED ✓</div>
+                    <div class="skill-icon">🎨</div>
+                    <h3 class="skill-name font-bold uppercase tracking-wide">CSS</h3>
+                    <p class="skill-desc">Learned styling, Flexbox, CSS Grid, positioning, keyframe animations, and responsive design.</p>
+                    <div class="skill-level font-bold">MASTERY: LEVEL 10</div>
+                </div>
+
+                <!-- Skill 3: Java -->
+                <div class="game-card skill-card learning hover:border-accentGold transition-colors">
+                    <div class="skill-status-tag status-learning font-bold tracking-wider">CURRENTLY LEARNING ⏳</div>
+                    <div class="skill-icon">☕</div>
+                    <h3 class="skill-name font-bold uppercase tracking-wide">Java</h3>
+                    <p class="skill-desc">Currently learning object-oriented programming, data structures, and core logic.</p>
+                    <div class="skill-level font-bold">MASTERY: LEVELING UP...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 🔒 PROJECTS / QUESTS SECTION              -->
+        <!-- ========================================== -->
+        <section id="projects" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title tracking-tight"><span>🔒</span> QUEST LOG: PROJECTS</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="projects-notice-card game-card">
+                <div class="quest-notice-icon">🚧</div>
+                <div class="quest-notice-text">
+                    <h3 class="font-bold">PROJECT QUESTS UNLOCKING SOON!</h3>
+                    <p>
+                        I am currently building my core foundation in Computer Science, HTML, CSS, and Java. 
+                        My upcoming software projects will be posted here as I unlock new milestones!
+                    </p>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Active Project: Builder's Day Portfolio -->
+                <div class="game-card project-card active-project hover:border-accentGreen transition-colors">
+                    <div class="project-badge status-active font-bold tracking-wider">QUEST COMPLETE ★</div>
+                    <div class="project-preview-box">
+                        <div class="project-pixel-art font-bold">🎮 WEBDEV 101</div>
+                    </div>
+                    <h3 class="project-title font-bold">Builder's Day Portfolio</h3>
+                    <p class="project-desc">
+                        A retro game-inspired portfolio website crafted using HTML, CSS, and subtle Tailwind utility styling!
+                    </p>
+                    <div class="project-tech-tags">
+                        <span class="tech-tag font-bold">HTML</span>
+                        <span class="tech-tag font-bold">CSS</span>
+                        <span class="tech-tag font-bold">Tailwind (10%)</span>
+                        <span class="tech-tag font-bold">Animations</span>
+                    </div>
+                </div>
+
+                <!-- Locked Slot 1 -->
+                <div class="game-card project-card locked-project">
+                    <div class="project-badge status-locked font-bold tracking-wider">🔒 LOCKED QUEST 01</div>
+                    <div class="project-preview-box locked-box">
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                    <h3 class="project-title font-bold">Java Console Game / App</h3>
+                    <p class="project-desc">
+                        Will be unlocked once Java Object-Oriented concepts are mastered.
+                    </p>
+                    <div class="project-tech-tags">
+                        <span class="tech-tag locked-tag font-bold">Java</span>
+                        <span class="tech-tag locked-tag font-bold">OOP</span>
+                    </div>
+                </div>
+
+                <!-- Locked Slot 2 -->
+                <div class="game-card project-card locked-project">
+                    <div class="project-badge status-locked font-bold tracking-wider">🔒 LOCKED QUEST 02</div>
+                    <div class="project-preview-box locked-box">
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                    <h3 class="project-title font-bold">Full Web Application</h3>
+                    <p class="project-desc">
+                        Will be unlocked in future Web Dev modules.
+                    </p>
+                    <div class="project-tech-tags">
+                        <span class="tech-tag locked-tag font-bold">HTML</span>
+                        <span class="tech-tag locked-tag font-bold">CSS</span>
+                        <span class="tech-tag locked-tag font-bold">Backend</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 🎓 EDUCATION SECTION                       -->
+        <!-- ========================================== -->
+        <section id="education" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title tracking-tight"><span>🎓</span> GUILD TRAINING (EDUCATION)</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="education-card game-card hover:border-accentCyan transition-colors">
+                <div class="edu-icon-badge">🏛️</div>
+                <div class="edu-details">
+                    <div class="edu-time font-bold tracking-widest">PRESENT</div>
+                    <h3 class="edu-school font-bold">Scaler School of Technology</h3>
+                    <h4 class="edu-degree font-semibold">Bachelor of Science / Computer Science Program</h4>
+                    <p class="edu-desc">
+                        Studying fundamentals of software development, computer science concepts, web engineering, algorithms, and practical coding.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 💬 CONTACT SECTION                         -->
+        <!-- ========================================== -->
+        <section id="contact" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title tracking-tight"><span>💬</span> COMMUNICATE / CONTACT</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Social Channels -->
+                <div class="game-card contact-card">
+                    <h3 class="font-bold uppercase tracking-wider">CONNECT WITH ATHARVA</h3>
+                    <p>Feel free to check out my profiles or send an email!</p>
+                    
+                    <div class="contact-links-list">
+                        <!-- Gmail Address (Static display) -->
+                        <div class="contact-btn email-btn cursor-default">
+                            <span class="icon">📧</span>
+                            <div class="link-info">
+                                <span class="link-label font-bold uppercase tracking-wider">GMAIL ADDRESS</span>
+                                <span class="link-url font-semibold">pandeyatharva@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/AtharvaP0507" target="_blank" class="contact-btn github-btn hover:scale-105 transition-transform">
+                            <span class="icon">🐙</span>
+                            <div class="link-info">
+                                <span class="link-label font-bold uppercase tracking-wider">GITHUB PROFILE</span>
+                                <span class="link-url font-semibold">github.com/AtharvaP0507</span>
+                            </div>
+                            <span class="arrow font-bold">➔</span>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/atharva-pandey-a6032043a/" target="_blank" class="contact-btn linkedin-btn hover:scale-105 transition-transform">
+                            <span class="icon">💼</span>
+                            <div class="link-info">
+                                <span class="link-label font-bold uppercase tracking-wider">LINKEDIN PROFILE</span>
+                                <span class="link-url font-semibold">linkedin.com/in/atharva-pandey-a6032043a</span>
+                            </div>
+                            <span class="arrow font-bold">➔</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- ⭐ FEEDBACK SECTION                        -->
+        <!-- ========================================== -->
+        <section id="feedback" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title tracking-tight"><span>⭐</span> PLAYER FEEDBACK & RATINGS</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="game-card feedback-card">
+                <div class="feedback-header">
+                    <h3 class="font-bold uppercase tracking-wider">HOW WAS YOUR EXPERIENCE?</h3>
+                    <p>Click a star from 1 to 5 to select your rating!</p>
+                </div>
+
+                <div class="feedback-form">
+                    <!-- Checkbox for Submit Toggle (Pure CSS) -->
+                    <input type="checkbox" id="submit-feedback-toggle" class="feedback-toggle">
+
+                    <!-- Star Rating System (Flat structure for CSS sibling selector) -->
+                    <div class="rating-stars-container select-none">
+                        <input type="radio" id="star5" name="star-rating" class="star-radio">
+                        <label for="star5" class="star-label" title="5 Stars">★</label>
+
+                        <input type="radio" id="star4" name="star-rating" class="star-radio">
+                        <label for="star4" class="star-label" title="4 Stars">★</label>
+
+                        <input type="radio" id="star3" name="star-rating" class="star-radio">
+                        <label for="star3" class="star-label" title="3 Stars">★</label>
+
+                        <input type="radio" id="star2" name="star-rating" class="star-radio">
+                        <label for="star2" class="star-label" title="2 Stars">★</label>
+
+                        <input type="radio" id="star1" name="star-rating" class="star-radio">
+                        <label for="star1" class="star-label" title="1 Star">★</label>
+
+                        <!-- Dynamic Star Response Messages -->
+                        <div class="star-messages-box">
+                            <div class="star-msg msg-default">Click on a star rating (1 to 5) above!</div>
+                            <div class="star-msg msg-1">"Sorry to diappoint you , I will try harder next time"</div>
+                            <div class="star-msg msg-2">"Ok i will make sure to try harder so you can be satisfied"</div>
+                            <div class="star-msg msg-3">"I appreciate it , i will work harder "</div>
+                            <div class="star-msg msg-4">"Thank you for the feedback , I will make sure next time you give me that fifth star too"</div>
+                            <div class="star-msg msg-5">"Thanks for your kind Feedback  , I will give my 100 % next time so that you always give me 5 star"</div>
+                        </div>
+                    </div>
+
+                    <!-- Optional Written Feedback Textarea -->
+                    <div class="form-group optional-feedback-group">
+                        <label for="written-feedback" class="font-bold tracking-wider">ADDITIONAL FEEDBACK (OPTIONAL):</label>
+                        <textarea id="written-feedback" rows="3" placeholder="Share your suggestions or thoughts... (Optional)" class="transition-colors"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <label for="submit-feedback-toggle" class="btn btn-primary submit-feedback-btn font-bold uppercase tracking-wider hover:scale-105 transition-transform">
+                        ⭐ SUBMIT FEEDBACK
+                    </label>
+
+                    <!-- Connor "Have a nice day!" Success Message Box -->
+                    <div class="feedback-success-card">
+                        <div class="connor-avatar-wrapper">
+                            <img src="connor.png" alt="Connor Companion" class="connor-thanks-img">
+                        </div>
+                        <h3 class="thanks-title font-bold">"Have a nice day!"</h3>
+                        <p class="thanks-subtitle font-bold uppercase tracking-wider">- Connor 📸</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- 🦶 FOOTER                                  -->
+    <!-- ========================================== -->
+    <footer class="game-footer">
+        <div class="footer-content">
+            <div class="footer-logo font-bold tracking-widest">ATHARVA PANDEY</div>
+            <p>© 2026 Atharva Pandey • Built using 90% <strong>HTML & Custom CSS</strong> with 10% <strong>Tailwind CSS</strong> for Scaler Builders Day.</p>
+            <p class="footer-sub">Special thanks to companion <strong>Connor</strong> 📸</p>
+        </div>
+    </footer>
+</body>
+</html>
